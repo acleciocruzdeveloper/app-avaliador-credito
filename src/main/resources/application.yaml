@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: service-appraiser
+  rabbitmq:
+    host: ${RABBIT_HOST:localhsot}
+    port: 5672
+    username: ${RABBITMQ_USERNAME:guest}
+    password: ${RABBITMQ_PASSWORD:guest}
+
+server:
+  port: 0
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${USER_EUREKA}:${PASSWORD_EUREKA}@${EUREKA_SERVER:localhost}:8761/eureka/
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+mq:
+  queues:
+    novo-cartao-solicitado: novo-cartao-solicitado
